@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VermaVibe - 量子農法 | Quantum Farming</title>
+    <title>VermaVibe - Quantum Agriculture</title>
     <style>
         * {
             margin: 0;
@@ -12,274 +12,542 @@
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            color: #2c3e2d;
+            background: #f8faf6;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
-            color: white;
-            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1.3rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(76, 124, 44, 0.1);
+            transition: all 0.3s;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(76, 124, 44, 0.08);
         }
 
         nav {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 2.5rem;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4a7c2c 0%, #5d9936 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.8rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: white;
+            color: #5a6b4a;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
+            font-size: 0.95rem;
             font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4a7c2c;
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            color: #4a7c2c;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1a3a0f 0%, #2d5016 50%, #4a7c2c 100%);
-            color: white;
-            padding: 150px 2rem 100px;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Brand Section */
+        .brand-intro {
+            background: linear-gradient(135deg, #e8f3dc 0%, #f8faf6 50%, #ffffff 100%);
+            padding: 160px 2.5rem 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .brand-intro::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s linear infinite;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(74, 124, 44, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(93, 153, 54, 0.05) 0%, transparent 50%);
         }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
-
-        .hero-content {
-            max-width: 900px;
+        .brand-content {
+            max-width: 950px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .brand-intro h1 {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4a7c2c 0%, #5d9936 50%, #7ab648 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
         }
 
-        .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.95;
+        .brand-intro .tagline {
+            font-size: 1.4rem;
+            color: #5a6b4a;
+            font-weight: 400;
+            line-height: 1.8;
         }
 
-        .hero .subtitle-en {
-            font-size: 1.1rem;
-            opacity: 0.85;
-            font-style: italic;
+        /* Hero Section */
+        .hero {
+            background: white;
+            padding: 100px 2.5rem;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #3a4a3a;
             margin-bottom: 2rem;
         }
 
         .cta-button {
             display: inline-block;
-            background: white;
-            color: #2d5016;
-            padding: 1rem 3rem;
-            border-radius: 50px;
+            background: linear-gradient(135deg, #4a7c2c 0%, #5d9936 100%);
+            color: white;
+            padding: 1.2rem 3.5rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-top: 2rem;
+            transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 8px 25px rgba(74, 124, 44, 0.25);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 35px rgba(74, 124, 44, 0.35);
         }
 
-        /* Features Section */
-        .features {
-            padding: 80px 2rem;
-            background: #f8f9fa;
+        /* Section Styling */
+        section {
+            padding: 100px 2.5rem;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2d5016;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: #4a7c2c;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
-        .feature-card h3 {
-            color: #2d5016;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6a7b5a;
+            margin-bottom: 4.5rem;
+            font-weight: 400;
         }
 
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
+        /* Growth Environment Section */
+        .growth-env {
+            background: linear-gradient(135deg, #e8f3dc 0%, #f8faf6 100%);
         }
 
-        /* About Section */
-        .about {
-            padding: 80px 2rem;
-            background: white;
-        }
-
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
+        .growth-intro {
+            max-width: 1000px;
+            margin: 0 auto 5rem;
             text-align: center;
         }
 
-        .about-content p {
+        .growth-intro p {
             font-size: 1.2rem;
-            line-height: 2;
-            color: #555;
+            line-height: 2.1;
+            color: #3a4a3a;
             margin-bottom: 1.5rem;
         }
 
-        /* Benefits Section */
-        .benefits {
-            padding: 80px 2rem;
-            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
         }
 
-        .benefits-list {
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border: 2px solid #e0ead0;
+            border-radius: 15px;
+            transition: all 0.4s;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(74, 124, 44, 0.08);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 124, 44, 0.03) 0%, transparent 100%);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-card:hover {
+            border-color: #4a7c2c;
+            box-shadow: 0 12px 40px rgba(74, 124, 44, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .benefit-card h4 {
+            color: #4a7c2c;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .benefit-card p {
+            color: #5a6b4a;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Case Study Section */
+        .case-study {
+            background: white;
+        }
+
+        .case-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .benefit-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid #4a7c2c;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        .case-text blockquote {
+            font-size: 1.3rem;
+            line-height: 2.1;
+            color: #3a4a3a;
+            border-left: 5px solid #4a7c2c;
+            padding-left: 2.5rem;
+            margin: 0 0 3rem 0;
+            font-style: italic;
         }
 
-        .benefit-item h4 {
-            color: #2d5016;
-            margin-bottom: 0.5rem;
+        .case-author {
+            font-weight: 700;
+            color: #4a7c2c;
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+        }
+
+        .case-results {
+            background: linear-gradient(135deg, #e8f3dc 0%, #f8faf6 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid #e0ead0;
+        }
+
+        .case-results h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #4a7c2c;
+            font-weight: 700;
+        }
+
+        .case-results ul {
+            list-style: none;
+        }
+
+        .case-results li {
+            padding: 0.9rem 0;
+            font-size: 1.05rem;
+            color: #5a6b4a;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .case-results li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4a7c2c;
+            font-weight: bold;
             font-size: 1.3rem;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 80px 2rem;
-            background: #2d5016;
-            color: white;
-            text-align: center;
+        .case-image {
+            background: linear-gradient(135deg, #e8f3dc 0%, #f8faf6 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid #e0ead0;
         }
 
-        .contact h2 {
+        .placeholder-img {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #d4e8c0 0%, #e8f3dc 100%);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #4a7c2c;
+            border: 3px dashed rgba(74, 124, 44, 0.3);
+        }
+
+        .placeholder-img small {
+            font-size: 1rem;
+            margin-top: 1rem;
+            color: #6a7b5a;
+        }
+
+        /* Vision Section */
+        .vision {
+            background: linear-gradient(135deg, #4a7c2c 0%, #5d9936 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .vision .section-title {
+            color: white;
+        }
+
+        .vision .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .vision-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vision-text {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .vision-text p {
+            font-size: 1.25rem;
+            line-height: 2.2;
             margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .vision-benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .vision-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.3s;
+        }
+
+        .vision-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .vision-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .vision-card p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #e8f3dc 0%, #f8faf6 100%);
+            text-align: center;
+            padding: 100px 2.5rem;
+        }
+
+        .contact-section h3 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #4a7c2c;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .contact-section p {
+            font-size: 1.25rem;
+            color: #5a6b4a;
+            margin-bottom: 4rem;
         }
 
         .contact-info {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            font-size: 1.15rem;
+            color: #3a4a3a;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+            border: 2px solid #e0ead0;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: #4a7c2c;
+            box-shadow: 0 8px 25px rgba(74, 124, 44, 0.2);
+            transform: translateY(-5px);
         }
 
         /* Footer */
         footer {
-            background: #1a3a0f;
-            color: white;
+            background: white;
+            color: #6a7b5a;
             text-align: center;
-            padding: 2rem;
+            padding: 3.5rem 2.5rem;
+            border-top: 1px solid #e0ead0;
         }
 
         footer p {
-            opacity: 0.8;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            color: #4a7c2c;
+            margin-top: 1rem;
+            font-weight: 600;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media (max-width: 1024px) {
+            .case-content {
+                grid-template-columns: 1fr;
             }
 
-            .hero .subtitle {
-                font-size: 1.1rem;
+            .vision-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .brand-intro h1 {
+                font-size: 3rem;
+                letter-spacing: 2px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
             }
 
             .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                gap: 1.5rem;
+                font-size: 0.85rem;
             }
 
-            .features-grid,
-            .benefits-list {
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .benefits-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -287,105 +555,198 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <nav>
             <div class="logo">VermaVibe</div>
             <ul class="nav-links">
-                <li><a href="#home">首頁</a></li>
-                <li><a href="#features">特色</a></li>
-                <li><a href="#about">關於</a></li>
-                <li><a href="#benefits">效益</a></li>
-                <li><a href="#contact">聯絡</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#growth">Growth</a></li>
+                <li><a href="#case">Success</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
+    <!-- Section 1: Brand Intro -->
+    <section id="home" class="brand-intro">
+        <div class="brand-content">
             <h1>VermaVibe</h1>
-            <p class="subtitle">量子農法，打造健康土壤、豐收作物與平衡生態</p>
-            <p class="subtitle-en">Quantum Farming for Healthy Soil, Abundant Crops, and Balanced Ecosystems</p>
-            <a href="#features" class="cta-button">探索更多</a>
+            <p class="tagline">Quantum Agriculture for Healthy Soil, Abundant Crops, and Balanced Ecosystems</p>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <!-- Section 2: Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p>
+                Quantum agriculture represents an agricultural revolution, activating nature's inherent energy to cultivate healthy soil, abundant crops, and balanced ecosystems.
+            </p>
+            <p>
+                Without relying on chemical agents, quantum agriculture harnesses Scalar Waves and Intrinsic Data Fields to revitalize microbial life, reduce pests and diseases, awaken plant vitality, enrich harvests, and comprehensively enhance agricultural efficiency—infusing farming with unprecedented life force.
+            </p>
+            <a href="#growth" class="cta-button">Discover More</a>
+        </div>
+    </section>
+
+    <!-- Section 3: Growth Environment -->
+    <section id="growth" class="growth-env">
         <div class="container">
-            <h2 class="section-title">核心特色</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌱</div>
-                    <h3>健康土壤</h3>
-                    <p>運用先進的土壤微生物技術，活化土壤生態系統，提升土壤有機質含量，建立自然的養分循環機制。</p>
+            <h2 class="section-title">Optimal Growing Conditions</h2>
+            <p class="section-subtitle">Customize Golden Growing Conditions for Your Crops</p>
+            
+            <div class="growth-intro">
+                <p>
+                    Crops flourish under ideal conditions. VermaVibe employs quantum calibration technology to adjust the information fields of climate, weather, soil, and plants—guiding them toward favorable development and creating the optimal growing environment for your agriculture.
+                </p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🦠</span>
+                    <h4>Soil Microbial Regeneration</h4>
+                    <p>Restore soil microbiome diversity to establish a thriving agricultural ecosystem</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌾</div>
-                    <h3>豐收作物</h3>
-                    <p>透過精準的營養管理與生物刺激技術，提高作物產量與品質，讓每一次收成都更豐碩。</p>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚡</span>
+                    <h4>Activate Dormant Elements</h4>
+                    <p>Release phosphorus, carbon, and nutrients for enhanced soil fertility</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🦋</div>
-                    <h3>平衡生態</h3>
-                    <p>促進農田生物多樣性，建立自然的害蟲控制系統，減少化學投入，創造永續的農業環境。</p>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">🪱</span>
+                    <h4>Rebuild Earthworm Habitat</h4>
+                    <p>Create ideal conditions for earthworms, naturally boosting soil health</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚖️</span>
+                    <h4>Optimize Soil pH</h4>
+                    <p>Balance soil acidity to create perfect growing conditions for crops</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">🌱</span>
+                    <h4>Adjust Growth Frequencies</h4>
+                    <p>Optimize crop growth cycles to accelerate healthy development</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">🛡️</span>
+                    <h4>Natural Pest Protection</h4>
+                    <p>Repel pathogens, pests, and harmful animals organically</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">📈</span>
+                    <h4>Reduce Chemicals, Increase Yield</h4>
+                    <p>Decrease chemical inputs while boosting agricultural production</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="benefit-icon">🌤️</span>
+                    <h4>Climate Protection</h4>
+                    <p>Enhance crop resistance to extreme weather conditions</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Section 4: Case Study -->
+    <section id="case" class="case-study">
         <div class="container">
-            <h2 class="section-title">關於 VermaVibe</h2>
-            <div class="about-content">
-                <p>VermaVibe 致力於推動新世代農業革命，結合創新科技與自然智慧，為農民提供永續且高效的耕作解決方案。</p>
-                <p>我們相信，真正的農業創新不是對抗自然，而是與自然共振。透過理解土壤微生物的能量流動，我們創造出讓作物、土壤、生態三者和諧共生的農法系統。</p>
-                <p>從種子到收成，從土壤到餐桌，VermaVibe 陪伴您踏上永續農業的旅程。</p>
-            </div>
-        </div>
-    </section>
+            <h2 class="section-title">Success Story</h2>
+            <p class="section-subtitle">Real Transformation from Our Fields</p>
+            
+            <div class="case-content">
+                <div class="case-text">
+                    <blockquote>
+                        After implementing VermaVibe's quantum agriculture, our tea garden underwent a remarkable transformation. The soil regained vitality, earthworm populations surged, and our product quality reached unprecedented heights. Most importantly, we significantly reduced chemical inputs while enhancing both yield and sustainability.
+                    </blockquote>
+                    <p class="case-author">— Yu-Min Tea Garden, Taiwan</p>
+                    
+                    <div class="case-results">
+                        <h4>Documented Results:</h4>
+                        <ul>
+                            <li>300% increase in earthworm population</li>
+                            <li>60% reduction in chemical inputs</li>
+                            <li>25% increase in crop yield</li>
+                            <li>Significant improvement in product quality</li>
+                            <li>Enhanced soil microbial activity</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="benefits">
-        <div class="container">
-            <h2 class="section-title">實際效益</h2>
-            <div class="benefits-list">
-                <div class="benefit-item">
-                    <h4>✓ 提升產量</h4>
-                    <p>平均增產 20-35%</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>✓ 改善品質</h4>
-                    <p>作物營養價值顯著提升</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>✓ 減少成本</h4>
-                    <p>降低化肥農藥使用 40-60%</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>✓ 土壤復育</h4>
-                    <p>有機質含量持續增加</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>✓ 抗病增強</h4>
-                    <p>作物自然抵抗力提升</p>
-                </div>
-                <div class="benefit-item">
-                    <h4>✓ 環境友善</h4>
-                    <p>碳足跡大幅降低</p>
+                <div class="case-image">
+                    <div class="placeholder-img">
+                        🌾 Agricultural Transformation
+                        <small>(Before & After)</small>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Section 5: Vision -->
+    <section id="vision" class="vision">
         <div class="container">
-            <h2>開始您的永續農業之旅</h2>
-            <p class="contact-info">📧 Email: info@vermavibe.com</p>
-            <p class="contact-info">📞 Phone: +886-2-XXXX-XXXX</p>
-            <p class="contact-info">📍 台灣</p>
+            <h2 class="section-title">Our Vision</h2>
+            <p class="section-subtitle">Quantum Agriculture, The Future</p>
+            
+            <div class="vision-content">
+                <div class="vision-text">
+                    <p>
+                        When quantum technology meets natural wisdom, VermaVibe transcends being merely a tool—it represents a paradigm shift in agriculture.
+                    </p>
+                    <p>
+                        Whether restoring depleted land or expanding sustainable yields, our quantum agricultural platform empowers you to "achieve more with less." Perfectly suited for natural farming, organic cultivation, and regenerative agriculture, leading toward the future of conscious farming.
+                    </p>
+                </div>
+
+                <div class="vision-benefits">
+                    <div class="vision-card">
+                        <h4>⚛️ Quantum Technology in Sustainable Agriculture</h4>
+                        <p>Combining cutting-edge technology with natural wisdom to pioneer a new agricultural era</p>
+                    </div>
+                    
+                    <div class="vision-card">
+                        <h4>🌍 Restore Land Vitality, Achieve Carbon Neutrality</h4>
+                        <p>Revive soil health and contribute to Earth's sustainability goals</p>
+                    </div>
+                    
+                    <div class="vision-card">
+                        <h4>💰 Reduce Costs, Increase Yields</h4>
+                        <p>Help farmers lower inputs while maximizing returns and profitability</p>
+                    </div>
+                    
+                    <div class="vision-card">
+                        <h4>🌾 Perfect for Natural & Organic Farming</h4>
+                        <p>Seamlessly integrates with natural farming, organic cultivation, and regenerative practices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Contact -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h3>Begin Your Quantum Agriculture Journey</h3>
+            <p>Let's create a beautiful future for agriculture together</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>bubuchacha@outlook.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Taiwan</span>
+                </div>
+            </div>
+            
+            <a href="#home" class="cta-button">Get Started</a>
         </div>
     </section>
 
@@ -393,7 +754,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 VermaVibe. All rights reserved.</p>
-            <p>量子農法 | 永續未來</p>
+            <p class="footer-tagline">Quantum Agriculture • Sustainable Future</p>
         </div>
     </footer>
 
@@ -412,19 +773,14 @@
             });
         });
 
-        // Add scroll effect to header
-        let lastScroll = 0;
+        // Header scroll effect
+        const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(45, 80, 22, 0.95)';
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
             } else {
-                header.style.background = 'linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%)';
+                header.classList.remove('scrolled');
             }
-            
-            lastScroll = currentScroll;
         });
     </script>
 </body>
