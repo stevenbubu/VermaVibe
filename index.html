@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -461,7 +461,7 @@
         }
 
         .contact-section h3 {
-            font-size: 3rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
             color: #4a7c2c;
             font-weight: 800;
@@ -471,15 +471,16 @@
         .contact-section p {
             font-size: 1.25rem;
             color: #5a6b4a;
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 4rem;
+            gap: 1rem;
             margin: 3rem 0;
             flex-wrap: wrap;
+            flex-direction: column;
         }
 
         .contact-item {
@@ -580,7 +581,7 @@
     <section id="home" class="brand-intro">
         <div class="brand-content">
             <h1>VermaVibe</h1>
-            <p class="tagline">Quantum Agriculture for Healthy Soil, Abundant Crops, and Balanced Ecosystems</p>
+            <p class="tagline">量子農法，打造健康土壤、豐收作物與平衡生態</p>
         </div>
     </section>
 
@@ -588,10 +589,10 @@
     <section class="hero">
         <div class="hero-content">
             <p>
-                Quantum agriculture represents an agricultural revolution, activating nature's inherent energy to cultivate healthy soil, abundant crops, and balanced ecosystems.
+                量子農法是一場農業革命，透過啟動自然界原有的能量，致力於打造健康的土壤、豐收的農作物，以及平衡生態環境。
             </p>
             <p>
-                Without relying on chemical agents, quantum agriculture harnesses Scalar Waves and Intrinsic Data Fields to revitalize microbial life, reduce pests and diseases, awaken plant vitality, enrich harvests, and comprehensively enhance agricultural efficiency—infusing farming with unprecedented life force.
+                量子農法運用 Scalar Waves 與 Intrinsic Data Fields，活化微生物生命、減少病蟲害、喚醒植物生命力、豐富收成，全面提升農作物效益，為農業注入前所未有的生命力。
             </p>
             <a href="#growth" class="cta-button">Discover More</a>
         </div>
@@ -601,11 +602,11 @@
     <section id="growth" class="growth-env">
         <div class="container">
             <h2 class="section-title">Optimized Agriculture</h2>
-            <p class="section-subtitle">Customize Golden Growing Conditions for Your Crops</p>
+            <p class="section-subtitle">訂製農作物黃金生長條件</p>
             
             <div class="growth-intro">
                 <p>
-                    Crops flourish under ideal conditions. VermaVibe employs quantum calibration technology to adjust the information fields of climate, weather, soil, and plants—guiding them toward favorable development and creating the optimal growing environment for your agriculture.
+                    農作物在適合的條件可以繁榮生長。VermaVibe運用量子校正技術調整氣候、天氣、土壤、農作物的訊息場，進而影響氣候、天氣、土壤、農作物朝向有利的方向發展，促成農作物最佳的生長環境。
                 </p>
             </div>
 
@@ -738,23 +739,44 @@
     </section>
 
     <!-- Section 6: Contact -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h3>Contact</h3>
-            <p>Let's create a beautiful future for agriculture together</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span>📧</span>
-                    <span>bubuchacha@outlook.com</span>
-                </div>
-                <div class="contact-item">
-                    <span>📍</span>
-                    <span>Taiwan</span>
+    <section id="contact" class="contact-section" style="display: flex; flex-wrap: wrap; padding: 40px 0;">
+        <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+            <!-- Left side: Contact Info -->
+            <div style="flex: 1; min-width: 300px; padding: 20px;">
+                <h3>Contact us</h3>
+                <p><strong>一起打造農業的美好未來</strong></p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>bubuchacha@outlook.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>WhatsApp</span> 
+                        <span>bubuchacha@outlook.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Taiwan</span>
+                    </div>
                 </div>
             </div>
-            
-            <a href="#home" class="cta-button">Get Started</a>
+
+            <!-- Right side: Contact Form -->
+            <div style="flex: 1; min-width: 300px; padding: 20px;">
+                <h3>Your Information</h3>
+                <form action="https://formspree.io/f/mwpwlrvq" method="POST">
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" id="name" name="name" placeholder="Your Name" style="width: 100%; padding: 8px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" id="email" name="email" placeholder="Email" style="width: 100%; padding: 8px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <textarea id="message" name="message" rows="5" placeholder="Message" style="width: 100%; padding: 8px;"></textarea>
+                    </div>
+                    <button type="submit" style="padding: 10px 20px;">Send</button>
+                </form>
+            </div>
         </div>
     </section>
 
